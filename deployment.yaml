@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: footcap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: footcapapp
+  template:
+    metadata:
+      labels:
+        app: footcapapp
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: footcap
+        image: 553041437467.dkr.ecr.us-east-1.amazonaws.com/abhishek-ecr:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        
