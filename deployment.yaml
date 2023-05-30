@@ -25,5 +25,18 @@ spec:
             cpu: 250m
             memory: 256Mi
         ports:
-        - containerPort: 80
+        - containerPort: 80 
+--- 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: footcap
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: footcapapp
+
         
